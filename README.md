@@ -1,5 +1,5 @@
 # FruitStore目录结构
-Model文件夹存放类模型
+Model文件夹存放类模型<br/>
 webMembers文件夹存放网页界面
 DAl文件夹存放数据库操作类
 pagebase.master作为母版页
