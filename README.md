@@ -1,0 +1,6 @@
+# FruitStore
+Model文件夹存放类模型
+webMembers文件夹存放网页界面
+DAl文件夹存放数据库操作类
+pagebase.master作为母版页
+css文件夹下存放样式表
