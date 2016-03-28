@@ -69,7 +69,7 @@
                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/WebMembers/myshopcar.aspx" Text="我的购物车" />
                     </li>
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MemberPages/MyReservations.aspx" Text="我的订单"/>
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/WebMembers/myorders.aspx" Text="我的订单"/>
                     </li>
 
                 </ul>

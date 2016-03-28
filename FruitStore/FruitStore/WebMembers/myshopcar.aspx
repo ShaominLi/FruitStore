@@ -39,6 +39,17 @@
     border: 1px solid gray;
 }
     </style>
+    <script type="text/javascript">
+        function submit() {
+            if (confirm("确定提交吗？")) {
+                //alert("!!");
+                var price = document.getElementById("<%=txtSumPrice.ClientID %>").innerText;
+                var url = "submitorder.aspx?price=" + price;
+                //alert(url);
+                window.location.href = url;
+            }
+        }
+    </script>
 </asp:Content>
 <%--<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderNav" runat="server">
     欢迎来到水果商城
@@ -81,6 +92,8 @@
     <div style="float:right;">
         <div> 总价：<asp:Label ID="txtSumPrice" runat="server" Text=""></asp:Label></div>
         <div>
-            <asp:LinkButton ID="lbtnSubmit" runat="server">确认购买</asp:LinkButton></div>
+            <asp:HyperLink ID="Submit" runat="server" NavigateUrl="javascript:submit();" Text ="确认购买" />
+        </div>
     </div>
+   
 </asp:Content>

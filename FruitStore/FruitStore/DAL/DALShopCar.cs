@@ -99,9 +99,30 @@ namespace FruitStore.DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
 
-                cmd.CommandText = string.Format("select SUM(FruitSumPrice) from ShopCar where UserId={0};", userid);
-                float sum = (float)Convert.ToDouble(cmd.ExecuteScalar());
+                cmd.CommandText = string.Format("select count(*) from ShopCar where UserId={0};", userid);
+                int num = Convert.ToInt32(cmd.ExecuteScalar());
+                float sum = 0;
+                if (num != 0)
+                {
+                    cmd.CommandText = string.Format("select SUM(FruitSumPrice) from ShopCar where UserId={0};", userid);
+                    sum = (float)Convert.ToDouble(cmd.ExecuteScalar());
+                }
                 return sum;
+            }
+
+        }
+
+        //清空购物车
+        public static void ClearShopCar(int userid)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("delete from ShopCar where UserId={0};", userid);
+                cmd.Connection = conn;
+                cmd.ExecuteNonQuery();
             }
 
         }

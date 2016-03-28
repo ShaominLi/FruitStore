@@ -21,4 +21,18 @@
 --update ShopCar set FruitNum+=3 where FruitId=3 and UserId =1;
 --select * from DeliveryAddressinfo;
 --insert into DeliveryAddressinfo values(1,'山西省太原市迎泽西大街太原理工大学迎西校区','123','18334700000');
-update DeliveryAddressinfo set DeliveryAddress='山西省太原市迎泽西大街太原理工大学迎西校区+1231344+122+' where UserId=1;
+--update DeliveryAddressinfo set DeliveryAddress='山西省太原市迎泽西大街太原理工大学迎西校区+山西省朔州市怀仁县+' where UserId=1;
+--select * from OrderInfo;
+--select * from OrderStatus;
+--insert into OrderStatus values(0,'已提交订单，请付款');
+--insert into OrderStatus values(1,'已付款，请等待卖家发货');
+--insert into OrderStatus values(2,'已发货，快递小哥正飞速前往');
+--insert into OrderStatus values(4,'订单结束，感谢您对我们的信任，欢迎您下次光临');
+--select statusComments from orderStatus where statusid=1; 
+--select f.*,i.statusComments from OrderInfo f left join orderStatus i on f.OrderStatus=i.statusid where OrderUserName='test' ;
+--insert into OrderInfo(OrderPrice,OrderUserName,OrderUserAdress,OrderUserPhone,OrderTime,OrderStatus,OrderComment) values(10.00,'test','太原市迎泽大街','18334700000','2012-12-12 12:12:12',0,'芒果');
+--delete from OrderInfo;
+--select * from OrderInfo where OrderUserName='test';
+--update OrderInfo set OrderStatus='' where OrderId=13;
+
+

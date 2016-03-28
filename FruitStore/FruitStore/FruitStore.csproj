@@ -221,7 +221,9 @@
     <Content Include="WebMembers\modifypsw.aspx" />
     <Content Include="WebMembers\mydeliveryinfo.aspx" />
     <Content Include="WebMembers\myInfo.aspx" />
+    <Content Include="WebMembers\myorders.aspx" />
     <Content Include="WebMembers\myshopcar.aspx" />
+    <Content Include="WebMembers\submitorder.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -307,10 +309,12 @@
       <DependentUpon>BasePage.Master</DependentUpon>
     </Compile>
     <Compile Include="DAL\DALFruits.cs" />
+    <Compile Include="DAL\DALOrders.cs" />
     <Compile Include="DAL\DALShopCar.cs" />
     <Compile Include="DAL\DALUsers.cs" />
     <Compile Include="Model\DeliveryInfo.cs" />
     <Compile Include="Model\Fruits.cs" />
+    <Compile Include="Model\OrderInfo.cs" />
     <Compile Include="Model\ShopCar.cs" />
     <Compile Include="Model\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -363,12 +367,26 @@
     <Compile Include="WebMembers\myInfo.aspx.designer.cs">
       <DependentUpon>myInfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebMembers\myorders.aspx.cs">
+      <DependentUpon>myorders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMembers\myorders.aspx.designer.cs">
+      <DependentUpon>myorders.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebMembers\myshopcar.aspx.cs">
       <DependentUpon>myshopcar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebMembers\myshopcar.aspx.designer.cs">
       <DependentUpon>myshopcar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebMembers\submitorder.aspx.cs">
+      <DependentUpon>submitorder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMembers\submitorder.aspx.designer.cs">
+      <DependentUpon>submitorder.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
