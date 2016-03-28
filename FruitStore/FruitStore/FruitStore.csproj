@@ -187,7 +187,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
-    <Content Include="Images\fruits\套餐_草莓.jpg" />
+    <Content Include="Images\fruits\套餐1.jpg" />
+    <Content Include="Images\fruits\套餐2.jpg" />
+    <Content Include="Images\fruits\套餐3.jpg" />
+    <Content Include="Images\fruits\套餐4.jpg" />
+    <Content Include="Images\fruits\套餐5.jpg" />
+    <Content Include="Images\fruits\套餐6.jpg" />
     <Content Include="Images\fruits\柠檬.jpg" />
     <Content Include="Images\fruits\樱桃.jpg" />
     <Content Include="Images\fruits\橙子.jpg" />
@@ -215,6 +220,7 @@
     <Content Include="styles\common.css" />
     <Content Include="WebMembers\apply.aspx" />
     <Content Include="WebMembers\fruitmenu.aspx" />
+    <Content Include="WebMembers\groupfruit.aspx" />
     <Content Include="WebMembers\login.aspx" />
     <Content Include="BasePage.Master" />
     <Content Include="WebMembers\mainmemu.aspx" />
@@ -331,6 +337,13 @@
     </Compile>
     <Compile Include="WebMembers\fruitmenu.aspx.designer.cs">
       <DependentUpon>fruitmenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebMembers\groupfruit.aspx.cs">
+      <DependentUpon>groupfruit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMembers\groupfruit.aspx.designer.cs">
+      <DependentUpon>groupfruit.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebMembers\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

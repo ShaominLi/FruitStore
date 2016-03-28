@@ -40,9 +40,6 @@
         <div class="header-banner">
  <%--           <asp:Image ID="imgHeader" runat="server" ImageUrl="~\Images\head.jpg" AlternateText=" Logo" Width="200px" />--%>
         </div>
-        <div class="header-title">
-             欢迎访问水果商城
-        </div>
         <div class="header-quicklink">
             <div id="divSigned" runat="server">
                 欢迎您,
@@ -54,6 +51,9 @@
                 <asp:HyperLink ID="linkRegister" runat="server" NavigateUrl="~/WebMembers/apply.aspx" Text="注册" />
                 <asp:HyperLink ID="linkExit" runat="server" NavigateUrl="javascript:exit();" Text ="退出" />
             </div>
+        </div>
+        <div class="header-title">
+             欢迎访问水果商城
         </div>
     </div>
     <div class="page-body">
@@ -96,14 +96,14 @@
                 <div id="child2" style="display: none;">
                 <ul class="sidebar-menu">
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AdminPages/Departments.aspx" Text="进口鲜果"/>
+                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=1" Text="进口鲜果"/>
                     </li>
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/AdminPages/ApproveAccount.aspx" Text="国内应季"/>
+                        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=2" Text="国内应季"/>
                     </li>
-                    <li class="sidebar-menuitem">
+                    <%--<li class="sidebar-menuitem">
                         <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/AdminPages/SearchEmployees.aspx" Text="超值套餐"/>
-                    </li>
+                    </li>--%>
                 </ul>
                 </div>
             </div>
@@ -112,13 +112,13 @@
                 <div id="child3" style="display: none;">
                 <ul class="sidebar-menu">
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/AdminPages/Departments.aspx" Text="营养套餐"/>
+                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=3" Text="营养套餐"/>
                     </li>
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AdminPages/ApproveAccount.aspx" Text="应季搭配"/>
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=4" Text="应季搭配"/>
                     </li>
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/AdminPages/SearchEmployees.aspx" Text="精装礼盒"/>
+                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=5" Text="精装礼盒"/>
                     </li>
                
                 </ul>
@@ -142,8 +142,10 @@
         </div>
     </div>
     <div class="page-footer">
-        <hr />
+       
+                    <hr />
        欢迎进入水果商城，在这里，淘到你手软~
+        
        
     </div>
 </body>

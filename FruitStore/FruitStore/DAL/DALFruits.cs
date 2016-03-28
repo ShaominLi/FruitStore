@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using FruitStore.Model;
 using System.Configuration;
+using System.Web.UI.WebControls;
 
 
 namespace FruitStore.DAL
@@ -14,7 +15,7 @@ namespace FruitStore.DAL
     public class DALFruits
     {
         //显示全部信息
-        public static DataTable SelectAllInfo()
+        public static PagedDataSource SelectAllInfo(int num, out int sumpage)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -28,10 +29,18 @@ namespace FruitStore.DAL
                 //SqlDataAdapter sadapter = new SqlDataAdapter(cmd);
                 SqlDataAdapter sadapter = new SqlDataAdapter();
                 sadapter.SelectCommand = cmd;
-                sadapter.Fill(dsUser);
-                DataTable dtable = new DataTable();
-                dtable = dsUser.Tables[0];
-                return dtable;
+                sadapter.Fill(dsUser,"name");
+
+                PagedDataSource pds = new PagedDataSource();
+                pds.DataSource = dsUser.Tables["name"].DefaultView;
+                pds.AllowPaging = true;//允许分页
+                pds.PageSize = 8;//单页显示项数
+                int curpage = num;
+                
+                pds.CurrentPageIndex = curpage - 1;
+                sumpage = pds.PageCount;
+                
+                return pds;
             }
         }
 
@@ -89,6 +98,36 @@ namespace FruitStore.DAL
 
                 return id;
 
+            }
+        }
+
+        //显示分组信息
+        public static PagedDataSource SelectAllInfoByGroup(int num, out int sumpage,int groupid)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("select f.*,i.FGroupName from FruitInfo f left join FruitGroupInfo i on f.FruitGroupId=i.FGroupId where i.FGroupId={0} ;", groupid);
+                cmd.Connection = conn;
+                //cmd.ExecuteReader();
+                DataSet dsUser = new DataSet();
+                //SqlDataAdapter sadapter = new SqlDataAdapter(cmd);
+                SqlDataAdapter sadapter = new SqlDataAdapter();
+                sadapter.SelectCommand = cmd;
+                sadapter.Fill(dsUser, "name");
+
+                PagedDataSource pds = new PagedDataSource();
+                pds.DataSource = dsUser.Tables["name"].DefaultView;
+                pds.AllowPaging = true;//允许分页
+                pds.PageSize = 8;//单页显示项数
+                int curpage = num;
+
+                pds.CurrentPageIndex = curpage - 1;
+                sumpage = pds.PageCount;
+
+                return pds;
             }
         }
     }

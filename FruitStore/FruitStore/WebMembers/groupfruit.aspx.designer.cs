@@ -10,7 +10,7 @@
 namespace FruitStore.WebMembers {
     
     
-    public partial class mainmemu {
+    public partial class groupfruit {
         
         /// <summary>
         /// FruitList 控件。

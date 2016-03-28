@@ -13,8 +13,8 @@ namespace FruitStore.WebMembers
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
+            if (!IsPostBack)
+            {
                 if (Session["UserName"] == null)
                     ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请先登录!');location='login.aspx';</script>");
                 else
@@ -23,7 +23,7 @@ namespace FruitStore.WebMembers
                     OrdersList.DataSource = DALOrders.SelectAllInfo(username);
                     OrdersList.DataBind();
                 }
-            //}
+            }
         }
 
         protected void OrdersList_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -36,13 +36,13 @@ namespace FruitStore.WebMembers
                     switch(status){
                         //付款操作
                         case 0: {
-                            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('付款成功!');</script>");
+                            Response.Write("<script>alert('付款成功!');</script>");
                             DALOrders.ModifyOrderStatus(orderid, DALOrders.GetStatusById(1));
                             break;
                         }
                         //等待发货
                         case 1: {
-                            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('已催卖家，请耐心等待!');</script>");
+                            Response.Write("<script>alert('已催卖家，请耐心等待!');</script>");
                             break; 
                         }
                         //确认收货
@@ -69,7 +69,7 @@ namespace FruitStore.WebMembers
                 default:
                     break;
             }
-            Response.Write("<script language=javascript>window.location.reload();</script>"); 
+            Response.Write("<script language=javascript>location='myorders.aspx';</script>"); 
         }
     }
 }

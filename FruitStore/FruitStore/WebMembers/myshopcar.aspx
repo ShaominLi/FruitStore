@@ -55,7 +55,7 @@
     欢迎来到水果商城
 </asp:Content>--%>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
-   我的购物车
+    我的购物车
     <asp:Repeater ID="ShopCarList" runat="server" OnItemCommand="ShopCarList_ItemCommand">
         <HeaderTemplate>
             <table class="listtable2">

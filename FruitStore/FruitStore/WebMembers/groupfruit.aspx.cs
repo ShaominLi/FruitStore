@@ -8,12 +8,14 @@ using FruitStore.DAL;
 
 namespace FruitStore.WebMembers
 {
-    public partial class mainmemu : System.Web.UI.Page
+    public partial class groupfruit : System.Web.UI.Page
     {
+
        static  private int curPage=1;
 
        static  private int sumPage = 0;
 
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +30,8 @@ namespace FruitStore.WebMembers
         }
         public void pageload()
         {
-            FruitList.DataSource = DALFruits.SelectAllInfo(curPage, out sumPage);
+            int groupid = Convert.ToInt32(Request.QueryString["groupid"]);
+            FruitList.DataSource = DALFruits.SelectAllInfoByGroup(curPage, out sumPage,groupid);
 
             this.btnDownPage.Enabled = true;
             this.btnUpPage.Enabled = true;
@@ -46,7 +49,7 @@ namespace FruitStore.WebMembers
         
         }
 
-        protected void btnUp_Click(object sender, EventArgs e)
+        protected void btnUpPage_Click(object sender, EventArgs e)
         {
             curPage -= 1;
             txtCurPage.Text = Convert.ToString(curPage);
@@ -54,7 +57,7 @@ namespace FruitStore.WebMembers
 
         }
 
-        protected void btnDown_Click(object sender, EventArgs e)
+        protected void btnDownPage_Click(object sender, EventArgs e)
         {
             curPage += 1;
             txtCurPage.Text = Convert.ToString(curPage);

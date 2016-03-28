@@ -1,4 +1,5 @@
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\FruitStore.dll
+C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\FruitStore.pdb
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\Antlr3.Runtime.dll
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\AspNet.ScriptManager.jQuery.dll
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
@@ -34,4 +35,3 @@ C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构�
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\obj\Debug\FruitStore.dll
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\obj\Debug\FruitStore.pdb
-C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\FruitStore.pdb

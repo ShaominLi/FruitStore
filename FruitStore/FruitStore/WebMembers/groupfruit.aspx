@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/BasePage.Master" AutoEventWireup="true" CodeBehind="mainmemu.aspx.cs" Inherits="FruitStore.WebMembers.mainmemu" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/BasePage.Master" AutoEventWireup="true" CodeBehind="groupfruit.aspx.cs" Inherits="FruitStore.WebMembers.groupfruit" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -44,8 +45,8 @@
              共<asp:Label ID="txtSumPage" runat="server" Text="Label"></asp:Label>页 当前为第  
              <asp:Label ID="txtCurPage" runat="server" Text="Label"></asp:Label>页  
              <asp:Button ID="btnHeadPage" runat="server" Text="首页" OnClick="btnHeadPage_Click"></asp:Button>  
-             <asp:Button ID="btnUpPage" runat="server" Text="上一页" OnClick="btnUp_Click" ></asp:Button>  
-             <asp:Button ID="btnDownPage" runat="server" Text="下一页" OnClick="btnDown_Click"></asp:Button>  
+             <asp:Button ID="btnUpPage" runat="server" Text="上一页" OnClick="btnUpPage_Click" ></asp:Button>  
+             <asp:Button ID="btnDownPage" runat="server" Text="下一页" OnClick="btnDownPage_Click"></asp:Button>  
              <asp:Button ID="btnRealPage" runat="server" Text="尾页" OnClick="btnRealPage_Click"></asp:Button>            
          </div>           
 </asp:Content>
@@ -55,6 +56,7 @@
    
 
        
+
 
 
 

@@ -7,8 +7,10 @@
 --select f.*,i.FGroupName from FruitInfo f left join FruitGroupInfo i on f.FruitGroupId=i.FGroupId ;
 --update FruitInfo set FruitComment='新鲜芒果，最新上市，欢迎品尝' where FruitId=2;
 --update FruitInfo set FruitNPrice=9.3 where FruitId=2;
---insert into FruitInfo values(1,'香蕉','~\Images\fruits\香蕉.jpg','云南香蕉，新鲜',5,5);
+--insert into FruitInfo values(5,'套餐6','~\Images\fruits\套餐6.jpg','进口精装礼盒',300,280);
+select * from FruitInfo;
 --update FruitInfo set FruitImage='~\Images\fruits\樱桃.jpg' where FruitId=6;
+--delete from fruitInfo where FruitId=1006;
 --select * from UserInfo;
 --select * from FruitInfo where FruitName='草莓';
 --select * from OrderInfo;
