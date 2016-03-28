@@ -1,0 +1,95 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+using System.Data;
+using System.Data.SqlClient;
+using FruitStore.Model;
+using System.Configuration;
+
+
+namespace FruitStore.DAL
+{
+    public class DALFruits
+    {
+        //显示全部信息
+        public static DataTable SelectAllInfo()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "select f.*,i.FGroupName from FruitInfo f left join FruitGroupInfo i on f.FruitGroupId=i.FGroupId ;";
+                cmd.Connection = conn;
+                //cmd.ExecuteReader();
+                DataSet dsUser = new DataSet();
+                //SqlDataAdapter sadapter = new SqlDataAdapter(cmd);
+                SqlDataAdapter sadapter = new SqlDataAdapter();
+                sadapter.SelectCommand = cmd;
+                sadapter.Fill(dsUser);
+                DataTable dtable = new DataTable();
+                dtable = dsUser.Tables[0];
+                return dtable;
+            }
+        }
+
+         //根据水果名查询信息
+        public static Fruits GetInfoByName(string fruitname)
+        {
+            string connectionStr = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionStr))
+            {
+                //打开数据库连接
+                conn.Open();
+                //进行一系列操作
+                //创建SqlCommand对象
+                SqlCommand cmd = new SqlCommand();
+                //为Command属性赋值
+                cmd.Connection = conn;
+                //Text类型的命令
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = string.Format("select * from FruitInfo where FruitName='{0}'; ", fruitname);
+                //执行SqlCommand对象
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                sda.Fill(ds);
+                //存储数据
+                string fname = ds.Tables[0].Rows[0]["FruitName"] as string;
+                string fimg = ds.Tables[0].Rows[0]["FruitImage"] as string;
+                int fgroupid = (int)(ds.Tables[0].Rows[0]["FruitGroupId"]);
+                string fcomment = ds.Tables[0].Rows[0]["FruitComment"] as string;
+                float fop = (float)Convert.ToDouble(ds.Tables[0].Rows[0]["FruitOPrice"]);
+                float fnp = (float)Convert.ToDouble(ds.Tables[0].Rows[0]["FruitNPrice"]);
+                Fruits f = new Fruits(fname,fgroupid,fimg,fcomment,fop,fnp);
+
+                return f;
+            }
+        }
+
+         //根据水果名查询ID
+        public static int GetFruitIdByName(string fruitname)
+        {
+            string connectionStr = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionStr))
+            {
+                //打开数据库连接
+                conn.Open();
+                //进行一系列操作
+                //创建SqlCommand对象
+                SqlCommand cmd = new SqlCommand();
+                //为Command属性赋值
+                cmd.Connection = conn;
+                //Text类型的命令
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = string.Format("select FruitId from FruitInfo where FruitName='{0}' ", fruitname);
+                //执行SqlCommand对象
+                int id = Convert.ToInt32(cmd.ExecuteScalar());
+
+                return id;
+
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using FruitStore.Model;
+using FruitStore.DAL;
+
+namespace FruitStore.WebMembers
+{
+    public partial class fruitmenu : System.Web.UI.Page
+    {
+        private string fruitName;
+
+        public string FruitName
+        {
+            get { return fruitName; }
+            set { fruitName = value; }
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            FruitName = Request.QueryString["FruitName"];
+            //TextBox1.Text = FruitName;
+            Fruits f = DALFruits.GetInfoByName(FruitName);
+            
+            txtfName.Text = f.FruitName;
+            txtfComment.Text = f.FruitComment;
+            txtfNp.Text = f.FruitNPrice.ToString();
+            txtfOp.Text = f.FruitOPrice.ToString();
+
+            fimg.ImageUrl = f.FruitImage;
+
+        }
+    }
+}

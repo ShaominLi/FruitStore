@@ -1,0 +1,144 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BasePage.master.cs" Inherits="FruitStore.BasePage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>欢迎进入水果商城</title>
+    <link rel="stylesheet" href="styles/common.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function exit() {
+            if (confirm("确定退出吗？"))
+                //alert("!!");
+                window.location.href="login.aspx";
+        }
+        function show(el) {
+            a = document.getElementById("child" + el);
+
+            if (a.style.display == 'none') {
+                a.style.display = 'block';
+            }
+            else {
+                a.style.display = 'none';
+            }
+
+            return;
+        }
+    </script>
+</head>
+<body>
+    <div class="page-header">
+        <div class="header-banner">
+ <%--           <asp:Image ID="imgHeader" runat="server" ImageUrl="~\Images\head.jpg" AlternateText=" Logo" Width="200px" />--%>
+        </div>
+        <div class="header-title">
+             欢迎访问水果商城
+        </div>
+        <div class="header-quicklink">
+            <div id="divSigned" runat="server">
+                欢迎您,
+                <%=Session["UserName"]%>
+                <%--<asp:HyperLink ID="linkChangePwd" runat="server" NavigateUrl="~/WebMembers/modifypsw.aspx" Text="修改密码" />--%>
+            </div>
+            <div id="divUnSigned" runat="server">
+                <asp:HyperLink ID="linkLogin" runat="server" NavigateUrl="~/WebMembers/login.aspx" Text="登录" />
+                <asp:HyperLink ID="linkRegister" runat="server" NavigateUrl="~/WebMembers/apply.aspx" Text="注册" />
+                <asp:HyperLink ID="linkExit" runat="server" NavigateUrl="javascript:exit();" Text ="退出" />
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <div class="page-sidebar">
+            <div class="sidebar-menugroup" style="float:left;">
+            <asp:HyperLink class="sidebar-grouptitle" ID="Main" runat="server" NavigateUrl="~/WebMembers/mainmemu.aspx" Text="首页" />
+            </div>
+            <div class="sidebar-menugroup" style="float:left;margin-left:70px;">
+               <a class="sidebar-grouptitle" onclick="javascript:show(0);" href="javascript:void(0)">我的</a>
+                <div id="child0" style="display: none;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/WebMembers/myshopcar.aspx" Text="我的购物车" />
+                    </li>
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MemberPages/MyReservations.aspx" Text="我的订单"/>
+                    </li>
+
+                </ul>
+                </div>
+            </div>
+            <div class="sidebar-menugroup" style="float:left; margin-left:70px;">
+                <a class="sidebar-grouptitle" onclick="javascript:show(1);" href="javascript:void(0)">个人中心</a>
+                <div id="child1" style="display: none;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/WebMembers/myInfo.aspx" Text="查看个人信息"/>
+                    </li>
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink12" runat="server"  NavigateUrl="~/WebMembers/modifypsw.aspx" Text="修改密码"/>
+                    </li>
+                     <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink3" runat="server"  NavigateUrl ="~/MemberPages/ChangePassword.aspx" Text="管理收货地址"/>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <div class="sidebar-menugroup" id="Menu1" runat="server" style="float:left;  margin-left:70px;">
+                <a class="sidebar-grouptitle" onclick="javascript:show(2);" href="javascript:void(0)">鲜果专区</a>
+                <div id="child2" style="display: none;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/AdminPages/Departments.aspx" Text="进口鲜果"/>
+                    </li>
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/AdminPages/ApproveAccount.aspx" Text="国内应季"/>
+                    </li>
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/AdminPages/SearchEmployees.aspx" Text="超值套餐"/>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <div class="sidebar-menugroup" id="Menu2" runat="server" style="float:left;  margin-left:70px;">
+                <a class="sidebar-grouptitle" onclick="javascript:show(3);" href="javascript:void(0)">精品套餐</a>
+                <div id="child3" style="display: none;">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/AdminPages/Departments.aspx" Text="营养套餐"/>
+                    </li>
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/AdminPages/ApproveAccount.aspx" Text="应季搭配"/>
+                    </li>
+                    <li class="sidebar-menuitem">
+                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/AdminPages/SearchEmployees.aspx" Text="精装礼盒"/>
+                    </li>
+               
+                </ul>
+                </div>
+            </div>
+             <div class="sidebar-menugroup" id="searchMenu" runat="server" style="float:left;  margin-left:100px;">  
+                <input type="text" id="search"/>
+                <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/MemberPages/fruitmenu.aspx?FruitName=<%#search%>" Text ="搜索" />
+            </div>
+        </div>
+        <div class="page-content" >
+            <hr/>
+           <%-- <div class="content-nav">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderNav" runat="server">
+                    首页</asp:ContentPlaceHolder>
+            </div>--%>
+            <form id="form1" runat="server">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolderMain" runat="server">
+                   欢迎访问水果商城</asp:ContentPlaceHolder>
+            </form>
+        </div>
+    </div>
+    <div class="page-footer">
+        <hr />
+       欢迎进入水果商城，在这里，淘到你手软~
+       
+    </div>
+</body>
+</html>

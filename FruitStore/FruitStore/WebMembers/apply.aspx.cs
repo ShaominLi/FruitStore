@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using FruitStore.Model;
+using FruitStore.DAL;
+
+namespace FruitStore.WebMembers
+{
+    public partial class apply : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string uservname = txtUserName.Text.Trim();
+            string usertname = txtUserTName.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string address = (txtAddress.Text.Trim()+"+");
+            string phone = txtPhone.Text.Trim();
+
+            Users user = new Users(uservname,password, usertname,address, phone);
+            int flag = DALUsers.AddUser(user);
+
+            if (flag > 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('账户申请成功!');location='login.aspx';</script>");
+            }
+            else if (flag == 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('账户申请失败!,请联系管理员！');</script>");
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('用户名重复，请换用户名重试！');</script>");
+                txtUserName.Text = "";
+            }
+
+        }
+
+        protected void reset_Click(object sender, EventArgs e)
+        {
+            txtUserName.Text = "";
+            txtUserTName.Text = "";
+            txtPassword.Text = "";
+            txtAddress.Text = "";
+            txtPhone.Text = "";
+        }
+    }
+}
