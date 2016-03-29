@@ -22,6 +22,7 @@ namespace FruitStore.WebMembers
                     string username = Session["UserName"].ToString();
                     OrdersList.DataSource = DALOrders.SelectAllInfo(username);
                     OrdersList.DataBind();
+                    
                 }
             }
         }
@@ -53,8 +54,15 @@ namespace FruitStore.WebMembers
                         }
                         //评价
                         case 3: {
-                            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请对我们进行评价!');location='';</script>");
-                            DALOrders.ModifyOrderStatus(orderid, DALOrders.GetStatusById(4));
+                            //Response.Write("<script language=javascript>$.jBox(html, { title: '评价', submit: submit });</script>");
+                            string assess = Request.Form["txtAssess"].ToString();
+                            if (assess != "")
+                            {
+                                DALOrders.ModifyOrderStatus(orderid, DALOrders.GetStatusById(4));
+                                DALOrders.SetAssess(orderid, assess);
+                                Response.Write("<script language=javascript>alert('评价成功！');</script>");
+                            }
+                                                       
                             break; 
                         }
                         //删除订单

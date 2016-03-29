@@ -207,7 +207,6 @@
     <Content Include="Images\head.jpg" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\login.jpg" />
-    <Content Include="Images\main.jpg" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -218,29 +217,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Scripts\jquery-1.9.0.min.js" />
-    <Content Include="Scripts\jquery.jBox-2.3.min.js" />
-    <Content Include="Scripts\jquery.jBox-zh-CN.min.js" />
     <Content Include="styles\common.css" />
-    <Content Include="styles\jbox\images\jbox-button.png" />
-    <Content Include="styles\jbox\images\jbox-button1.png" />
-    <Content Include="styles\jbox\images\jbox-button2.png" />
-    <Content Include="styles\jbox\images\jbox-close.gif" />
-    <Content Include="styles\jbox\images\jbox-close1.gif" />
-    <Content Include="styles\jbox\images\jbox-close2.gif" />
-    <Content Include="styles\jbox\images\jbox-content-loading.gif" />
-    <Content Include="styles\jbox\images\jbox-icons-ie6.gif" />
-    <Content Include="styles\jbox\images\jbox-icons.png" />
-    <Content Include="styles\jbox\images\jbox-loading1.gif" />
-    <Content Include="styles\jbox\images\jbox-loading2.gif" />
-    <Content Include="styles\jbox\images\jbox-loading3.gif" />
-    <Content Include="styles\jbox\images\jbox-title-icon.gif" />
-    <Content Include="styles\jbox\jbox.css" />
-    <Content Include="WebMembers\AdminWebs\Adminmenu.aspx" />
-    <Content Include="WebMembers\AdminWebs\allorder.aspx" />
-    <Content Include="WebMembers\AdminWebs\modifypassword.aspx" />
-    <Content Include="WebMembers\AdminWebs\myinfo.aspx" />
-    <Content Include="WebMembers\AdminWebs\sendfruit.aspx" />
     <Content Include="WebMembers\apply.aspx" />
     <Content Include="WebMembers\fruitmenu.aspx" />
     <Content Include="WebMembers\groupfruit.aspx" />
@@ -281,13 +258,9 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Web.config" />
-    <Content Include="WebMembers\AdminWebs\admin.Master" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\_references.js" />
-    <Content Include="styles\jbox\Desktop.ini" />
-    <Content Include="styles\jbox\images\OneNote 目录.onetoc2" />
-    <Content Include="styles\jbox\OneNote 目录.onetoc2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -351,48 +324,6 @@
     <Compile Include="Model\ShopCar.cs" />
     <Compile Include="Model\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebMembers\AdminWebs\admin.Master.cs">
-      <DependentUpon>admin.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\admin.Master.designer.cs">
-      <DependentUpon>admin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\Adminmenu.aspx.cs">
-      <DependentUpon>Adminmenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\Adminmenu.aspx.designer.cs">
-      <DependentUpon>Adminmenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\allorder.aspx.cs">
-      <DependentUpon>allorder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\allorder.aspx.designer.cs">
-      <DependentUpon>allorder.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\modifypassword.aspx.cs">
-      <DependentUpon>modifypassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\modifypassword.aspx.designer.cs">
-      <DependentUpon>modifypassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\myinfo.aspx.cs">
-      <DependentUpon>myinfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\myinfo.aspx.designer.cs">
-      <DependentUpon>myinfo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\sendfruit.aspx.cs">
-      <DependentUpon>sendfruit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebMembers\AdminWebs\sendfruit.aspx.designer.cs">
-      <DependentUpon>sendfruit.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebMembers\apply.aspx.cs">
       <DependentUpon>apply.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

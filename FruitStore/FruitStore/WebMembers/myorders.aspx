@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#"  MasterPageFile="~/BasePage.Master" AutoEventWireup="true" CodeBehind="myorders.aspx.cs" Inherits="FruitStore.WebMembers.myorders" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="../styles/jbox/jbox.css" rel="stylesheet"/>
     <style type="text/css">
         .listtable2{
     width:100%;
@@ -38,6 +39,29 @@
     border: 1px solid gray;
 }
     </style>
+    <script src="../Scripts/jquery-1.9.0.min.js"></script>
+    <script src="../Scripts/jquery.jBox-2.3.min.js" ></script>
+    <script src="../Scripts/jquery.jBox-zh-CN.min.js"></script>
+    
+    <script type="text/javascript">
+        function assess() {
+            
+            var html = "<div style='padding:10px;'>输入评价：<input type='text' id='assess' name='assess' /></div>";
+            alert(html);
+            var submit = function (v, h, f) {
+                alert("KKKK");
+                if (f.assess == '') {
+                    $.jBox.tip("请输入评价。", 'error', { focusId: "assess" }); // 关闭设置 yourname 为焦点
+                    return false;
+                }
+               // document.getElementById("txtAssess").value = f.assess;
+                return false;
+            };
+            $.jBox(html, { title: '评价', submit: submit });
+            alert("KKKK1111");
+        }
+        
+    </script>
 </asp:Content>
 <%--<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderNav" runat="server">
     欢迎来到水果商城
@@ -67,17 +91,19 @@
                     <th>用户备注</th>
                     <th>快递信息</th>
                     <th>买家评价</th>
-                    <th>卖家评价</th>
+                    <%--<th>卖家评价</th>--%>
                     <th>下一步</th> 
+                    <th></th>
                 </tr>
             <tr>
                 <td><%# Eval("OrderUserComment") %></td>
                 <td> <%# Eval("OrderExpressCompany") %> <%# Eval("OrderExpressNumber") %></td>
                 <td><%# Eval("OrderAssessByUser") %></td>
-                <td><%# Eval("OrderAssessByAdm") %></td>
+                <%--<td><%# Eval("OrderAssessByAdm") %></td>--%>
                 <td>
-                    <asp:Button ID="btnNext" CommandName="Next" CommandArgument='<%#Eval("OrderId") %>' runat="server" Text='<%#Eval("Next") %>' />
-            </tr> 
+                    <asp:Button ID="btnNext" OnClientClick="assess()" CommandName="Next" CommandArgument='<%#Eval("OrderId") %>' runat="server" Text='<%#Eval("Next") %>' />
+            <td><%--<asp:TextBox ID="txtAssessByUser" runat="server" Visible="false"></asp:TextBox>--%></td>
+           </tr> 
    
         </ItemTemplate>
         
@@ -85,4 +111,5 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
+    <input  type="text" name="txtAssess" id="txtAssess" style="visibility:hidden;"/>  
 </asp:Content>

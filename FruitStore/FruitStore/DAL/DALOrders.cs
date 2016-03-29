@@ -7,6 +7,7 @@ using FruitStore.Model;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.UI.WebControls;
 
 //using FruitStore.Model;
 
@@ -113,5 +114,96 @@ namespace FruitStore.DAL
             }
 
         }
+
+        //查询全部订单，分页显示
+        public static PagedDataSource SelectAllInfo(int num, out int sumpage)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText ="select * from OrderInfo;" ;
+                cmd.Connection = conn;
+                //cmd.ExecuteReader();
+                DataSet dsUser = new DataSet();
+                //SqlDataAdapter sadapter = new SqlDataAdapter(cmd);
+                SqlDataAdapter sadapter = new SqlDataAdapter();
+                sadapter.SelectCommand = cmd;
+                sadapter.Fill(dsUser, "name");
+
+                PagedDataSource pds = new PagedDataSource();
+                pds.DataSource = dsUser.Tables["name"].DefaultView;
+                pds.AllowPaging = true;//允许分页
+                pds.PageSize = 8;//单页显示项数
+                int curpage = num;
+
+                pds.CurrentPageIndex = curpage - 1;
+                sumpage = pds.PageCount;
+                return pds;
+            }
+        }
+
+        //显示未发货订单
+        public static PagedDataSource SelectNotSendInfo(int num, out int sumpage)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "select i.* from OrderInfo i left join OrderStatus j on i.OrderStatus=j.StatusComments where j.StatusId=1;";
+                cmd.Connection = conn;
+                //cmd.ExecuteReader();
+                DataSet dsUser = new DataSet();
+                //SqlDataAdapter sadapter = new SqlDataAdapter(cmd);
+                SqlDataAdapter sadapter = new SqlDataAdapter();
+                sadapter.SelectCommand = cmd;
+                sadapter.Fill(dsUser, "name");
+
+                PagedDataSource pds = new PagedDataSource();
+                pds.DataSource = dsUser.Tables["name"].DefaultView;
+                pds.AllowPaging = true;//允许分页
+                pds.PageSize = 8;//单页显示项数
+                int curpage = num;
+
+                pds.CurrentPageIndex = curpage - 1;
+                sumpage = pds.PageCount;
+                return pds;
+            }
+        }
+
+        //发货
+        public static int SendFruit(int orderid ,string com,string num)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("update OrderInfo set OrderStatus=(select StatusComments from OrderStatus where StatusId=2 ), OrderExpressCompany={0},OrderExpressNumber={1} where OrderId={2};",com,num, orderid);
+                cmd.Connection = conn;
+                int result= Convert.ToInt32(cmd.ExecuteNonQuery());
+                return result;
+            }
+
+        }
+
+        //评价
+        public static int SetAssess(int orderid, string assess)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("update OrderInfo set assess={0} where OrderId={1};", assess, orderid);
+                cmd.Connection = conn;
+                int result = Convert.ToInt32(cmd.ExecuteNonQuery());
+                return result;
+            }
+
+        }
+
     }
 }

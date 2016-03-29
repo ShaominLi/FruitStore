@@ -29,15 +29,22 @@ namespace FruitStore.WebMembers
             if (flag > 0)
             {
                 Session["UserName"] = name;
-                if (ViewState["UrlReferrer"] == null)
-                    Response.Redirect("~/WebMembers/mainmemu.aspx");// 默认
+                if (name != "admin")
+                {
+                    if (ViewState["UrlReferrer"] == null)
+                        Response.Redirect("~/WebMembers/mainmemu.aspx");// 默认
+                    else
+                    {
+                        string url = ViewState["UrlReferrer"].ToString();
+                        int index = url.IndexOf("=");
+                        if (index != -1)
+                            url = url.Substring(0, index + 1);
+                        Response.Redirect(url);
+                    }
+                }
                 else
                 {
-                    string url = ViewState["UrlReferrer"].ToString();
-                    int index = url.IndexOf("=");
-                    if(index!=-1)
-                        url = url.Substring(0, index + 1);
-                    Response.Redirect(url);
+                    Response.Redirect("~/WebMembers/AdminWebs/Adminmenu.aspx");
                 }
             }
             else if (flag == 0)
