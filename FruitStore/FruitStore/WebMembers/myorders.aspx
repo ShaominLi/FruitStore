@@ -44,23 +44,40 @@
     <script src="../Scripts/jquery.jBox-zh-CN.min.js"></script>
     
     <script type="text/javascript">
-        function assess() {
+        //function stopDefault(e) {
+        //    // Prevent the default browser action (W3C)
+        //    if (e && e.preventDefault)
+        //        e.preventDefault();
+        //    else
+        //        // A shortcut for stoping the browser action in IE
+        //        window.event.returnValue = false;
+        //    return false;
+        //}
+
+        function assess(e) {
             
             var html = "<div style='padding:10px;'>输入评价：<input type='text' id='assess' name='assess' /></div>";
-            alert(html);
+            //alert(html);
             var submit = function (v, h, f) {
-                alert("KKKK");
+               
                 if (f.assess == '') {
                     $.jBox.tip("请输入评价。", 'error', { focusId: "assess" }); // 关闭设置 yourname 为焦点
                     return false;
+                } else {
+                    alert($("#txtAssess").val());
+                    var id = e.CommandArgument;
+                    alert(id);
+                    $("#txtAssess").attr("value", f.assess); 
+                  
+                    return true;
                 }
-               // document.getElementById("txtAssess").value = f.assess;
-                return false;
             };
             $.jBox(html, { title: '评价', submit: submit });
-            alert("KKKK1111");
+            return false;
+            //stopDefault(e);
         }
         
+
     </script>
 </asp:Content>
 <%--<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderNav" runat="server">
@@ -71,15 +88,16 @@
     <asp:Repeater ID="OrdersList" runat="server" OnItemCommand="OrdersList_ItemCommand">
         <HeaderTemplate>
             <table class="listtable2">
-                <tr class="listheader">   
+                
+        </HeaderTemplate>
+        <ItemTemplate>
+            <tr class="listheader">   
                     <th>订单时间</th>
                     <th>收货姓名</th>
                     <th>收货地址</th>
                     <th>收货电话</th>
                     <th>订单状态</th>               
                     </tr>
-        </HeaderTemplate>
-        <ItemTemplate>
             <tr>
                 <td><%# Eval("OrderTime") %></td>
                 <td><%# Eval("OrderUserName") %></td>
@@ -101,8 +119,8 @@
                 <td><%# Eval("OrderAssessByUser") %></td>
                 <%--<td><%# Eval("OrderAssessByAdm") %></td>--%>
                 <td>
-                    <asp:Button ID="btnNext" OnClientClick="assess()" CommandName="Next" CommandArgument='<%#Eval("OrderId") %>' runat="server" Text='<%#Eval("Next") %>' />
-            <td><%--<asp:TextBox ID="txtAssessByUser" runat="server" Visible="false"></asp:TextBox>--%></td>
+                    <asp:Button ID="btnNext" CommandName="Next" CommandArgument='<%#Eval("OrderId") %>' runat="server" Text='<%#Eval("Next") %>' /></td>
+            
            </tr> 
    
         </ItemTemplate>
@@ -111,5 +129,6 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
-    <input  type="text" name="txtAssess" id="txtAssess" style="visibility:hidden;"/>  
+    <input  type="text" name="txtAssess" id="txtAssess" style="visibility:hidden;" value="123"/>  
+    
 </asp:Content>

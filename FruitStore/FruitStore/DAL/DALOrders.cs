@@ -197,7 +197,7 @@ namespace FruitStore.DAL
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = string.Format("update OrderInfo set assess={0} where OrderId={1};", assess, orderid);
+                cmd.CommandText = string.Format("update OrderInfo set OrderAssessByUser='{0}' where OrderId={1};", assess, orderid);
                 cmd.Connection = conn;
                 int result = Convert.ToInt32(cmd.ExecuteNonQuery());
                 return result;

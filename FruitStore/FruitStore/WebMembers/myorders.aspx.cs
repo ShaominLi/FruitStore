@@ -21,8 +21,7 @@ namespace FruitStore.WebMembers
                 {
                     string username = Session["UserName"].ToString();
                     OrdersList.DataSource = DALOrders.SelectAllInfo(username);
-                    OrdersList.DataBind();
-                    
+                    OrdersList.DataBind();                   
                 }
             }
         }
@@ -48,26 +47,21 @@ namespace FruitStore.WebMembers
                         }
                         //确认收货
                         case 2: {
-                            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('确认收货成功!');</script>");
+                            Response.Write("<script>alert('确认收货成功!');</script>");
                             DALOrders.ModifyOrderStatus(orderid, DALOrders.GetStatusById(3));
                             break;
                         }
                         //评价
                         case 3: {
-                            //Response.Write("<script language=javascript>$.jBox(html, { title: '评价', submit: submit });</script>");
-                            string assess = Request.Form["txtAssess"].ToString();
-                            if (assess != "")
-                            {
-                                DALOrders.ModifyOrderStatus(orderid, DALOrders.GetStatusById(4));
-                                DALOrders.SetAssess(orderid, assess);
-                                Response.Write("<script language=javascript>alert('评价成功！');</script>");
-                            }
-                                                       
+                            string url = string.Format("<script>location='userassess.aspx?id={0}';</script>", orderid);
+                            Response.Write(url);
+                                                                                  
                             break; 
                         }
                         //删除订单
                         default: {
-                            ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('订单已删除!');</script>");
+                            Response.Write("<script>alert('订单已删除!');</script>");
+
                             DALOrders.DeleteOrderByOrderId(orderid);
                             break; 
                         }
@@ -77,7 +71,8 @@ namespace FruitStore.WebMembers
                 default:
                     break;
             }
-            Response.Write("<script language=javascript>location='myorders.aspx';</script>"); 
+           Response.Write("<script language=javascript>location='myorders.aspx';</script>"); 
         }
+
     }
 }

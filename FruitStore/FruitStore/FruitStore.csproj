@@ -200,7 +200,7 @@
     <Content Include="Images\fruits\芒果.jpg" />
     <Content Include="Images\fruits\苹果.jpg" />
     <Content Include="Images\fruits\草莓.jpg" />
-    <Content Include="Images\fruits\菠萝.jpg" />
+    <EmbeddedResource Include="Images\fruits\菠萝.jpg" />
     <Content Include="Images\fruits\葡萄.jpg" />
     <Content Include="Images\fruits\车厘子.jpg" />
     <Content Include="Images\fruits\香蕉.jpg" />
@@ -239,6 +239,8 @@
     <Content Include="WebMembers\AdminWebs\Adminmenu.aspx" />
     <Content Include="WebMembers\AdminWebs\allorder.aspx" />
     <Content Include="WebMembers\AdminWebs\modifypassword.aspx" />
+    <Content Include="WebMembers\AdminWebs\modifyprice.aspx" />
+    <Content Include="WebMembers\AdminWebs\modifyweb.aspx" />
     <Content Include="WebMembers\AdminWebs\myinfo.aspx" />
     <Content Include="WebMembers\AdminWebs\sendfruit.aspx" />
     <Content Include="WebMembers\apply.aspx" />
@@ -253,6 +255,7 @@
     <Content Include="WebMembers\myorders.aspx" />
     <Content Include="WebMembers\myshopcar.aspx" />
     <Content Include="WebMembers\submitorder.aspx" />
+    <Content Include="WebMembers\userassess.aspx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -379,6 +382,20 @@
     <Compile Include="WebMembers\AdminWebs\modifypassword.aspx.designer.cs">
       <DependentUpon>modifypassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebMembers\AdminWebs\modifyprice.aspx.cs">
+      <DependentUpon>modifyprice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMembers\AdminWebs\modifyprice.aspx.designer.cs">
+      <DependentUpon>modifyprice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebMembers\AdminWebs\modifyweb.aspx.cs">
+      <DependentUpon>modifyweb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMembers\AdminWebs\modifyweb.aspx.designer.cs">
+      <DependentUpon>modifyweb.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebMembers\AdminWebs\myinfo.aspx.cs">
       <DependentUpon>myinfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -469,6 +486,13 @@
     </Compile>
     <Compile Include="WebMembers\submitorder.aspx.designer.cs">
       <DependentUpon>submitorder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebMembers\userassess.aspx.cs">
+      <DependentUpon>userassess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMembers\userassess.aspx.designer.cs">
+      <DependentUpon>userassess.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -81,14 +81,12 @@
                 <div id="child3" style="display: none;">
                 <ul class="sidebar-menu">
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=3" Text="修改价格"/>
+                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="modifyprice.aspx" Text="修改信息/下架"/>
                     </li>
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=4" Text="上架水果"/>
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="modifyweb.aspx?id=0" Text="上架水果"/>
                     </li>
-                    <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/WebMembers/groupfruit.aspx?groupid=5" Text="下架水果"/>
-                    </li>
+
                
                 </ul>
                 </div>
