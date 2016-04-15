@@ -3,7 +3,7 @@
 --select Count(*) from UserInfo where UserVName='t';
 --delete from UserInfo where UserId=2;
 --update UserInfo set UserPsw='123456' where UserVName='test';
---select * from FruitInfo;
+select * from FruitInfo order by FruitId desc;
 --select * from FruitGroupInfo;
 --select FGroupName from FruitGroupInfo ;
 --select f.*,i.FGroupName from FruitInfo f left join FruitGroupInfo i on f.FruitGroupId=i.FGroupId ;
