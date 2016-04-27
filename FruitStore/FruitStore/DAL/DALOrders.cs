@@ -108,7 +108,11 @@ namespace FruitStore.DAL
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = string.Format("delete from OrderInfo where OrderId={0};", orderid);
+                cmd.CommandText = string.Format("delete from ShopCar where orderId={0}", orderid);
+                cmd.Connection = conn;
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = string.Format("delete from OrderInfo where orderId={0}", orderid);
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
             }
@@ -181,7 +185,7 @@ namespace FruitStore.DAL
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = string.Format("update OrderInfo set OrderStatus=(select StatusComments from OrderStatus where StatusId=2 ), OrderExpressCompany={0},OrderExpressNumber={1} where OrderId={2};",com,num, orderid);
+                cmd.CommandText = string.Format("update OrderInfo set OrderStatus=(select StatusComments from OrderStatus where StatusId=2 ), OrderExpressCompany='{0}',OrderExpressNumber='{1}' where OrderId={2};",com,num, orderid);
                 cmd.Connection = conn;
                 int result= Convert.ToInt32(cmd.ExecuteNonQuery());
                 return result;

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using FruitStore.DAL;
 using FruitStore.Model;
+using System.Data;
 
 namespace FruitStore.WebMembers
 {
@@ -19,9 +20,10 @@ namespace FruitStore.WebMembers
                     ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请先登录!');location='login.aspx';</script>");
                 else
                 {
-                    string username = Session["UserName"].ToString();
-                    OrdersList.DataSource = DALOrders.SelectAllInfo(username);
-                    OrdersList.DataBind();                   
+                    //string username = Session["UserName"].ToString();
+                    //OrdersList.DataSource = DALOrders.SelectAllInfo(username);
+                    //OrdersList.DataBind();                   
+                    InitData();
                 }
             }
         }
@@ -72,6 +74,27 @@ namespace FruitStore.WebMembers
                     break;
             }
            Response.Write("<script language=javascript>location='myorders.aspx';</script>"); 
+        }
+
+        protected void InitData()
+        {
+            string username = Session["UserName"].ToString();
+            OrdersList.DataSource = DALOrders.SelectAllInfo(username);
+            OrdersList.DataBind();
+        }
+
+        protected void OrdersList_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Repeater rep = e.Item.FindControl("fruitlist") as Repeater;//找到里层的repeater对象  
+                DataRowView rowv = (DataRowView)e.Item.DataItem;//找到分类Repeater关联的数据项  
+                int orderid = Convert.ToInt32(rowv["OrderId"]);//获取填充子类的id 
+                string username = Session["UserName"].ToString();
+                int userid = DALUsers.GetUserIdByName(username);
+                rep.DataSource = DALShopCar.GetInfoByUserId(userid,orderid);
+                rep.DataBind();
+            }  
         }
 
     }

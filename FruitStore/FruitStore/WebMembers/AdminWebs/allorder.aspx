@@ -43,7 +43,7 @@
     欢迎来到水果商城
 </asp:Content>--%>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
-   我的订单
+   客户订单
     <asp:Repeater ID="OrdersList" runat="server" >
         <HeaderTemplate>
             <table class="listtable2">
@@ -53,6 +53,7 @@
                     <th>收货地址</th>
                     <th>收货电话</th>
                     <th>订单状态</th>
+                    <th>用户备注</th>
                     <th>买家评价</th>                 
                     </tr>
         </HeaderTemplate>
@@ -63,6 +64,7 @@
                 <td> <%# Eval("OrderUserAdress") %></td>
                 <td><%# Eval("OrderUserPhone") %></td>
                 <td><%# Eval("OrderStatus") %></td>
+                <td><%# Eval("OrderUserComment") %></td>
                 <td><%# Eval("OrderAssessByUser") %></td>
             </tr>
  

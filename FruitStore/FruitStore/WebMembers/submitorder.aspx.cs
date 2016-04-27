@@ -28,8 +28,8 @@ namespace FruitStore.WebMembers
                 AddressList.DataBind();
 
                 //清空购物车
-                int userid = DALUsers.GetUserIdByName(Username);
-                DALShopCar.ClearShopCar(userid);
+                //int userid = DALUsers.GetUserIdByName(Username);
+                //DALShopCar.ClearShopCar(userid);
 
             }
 
@@ -48,6 +48,10 @@ namespace FruitStore.WebMembers
             int flag=DALOrders.InsertOrder(myorder);
             if (flag == 1)
             {
+                //绑定shopcarID和orderID
+                string Username = Session["UserName"].ToString();
+                int userid = DALUsers.GetUserIdByName(Username);
+                int result=DALShopCar.BindOrderId(userid);
                 Server.Transfer("myorders.aspx"); 
             }
         }

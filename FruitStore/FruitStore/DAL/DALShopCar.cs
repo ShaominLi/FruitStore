@@ -21,13 +21,13 @@ namespace FruitStore.DAL
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = string.Format("select COUNT(*) from ShopCar where UserId={0} and FruitId={1};"
+                cmd.CommandText = string.Format("select COUNT(*) from ShopCar where UserId={0} and FruitId={1} and orderId is null;"
                     ,item.Userid, item.Fruitid);
                 int result = Convert.ToInt32(cmd.ExecuteScalar());
                 int status;
                 if (result != 0)
                 {
-                    cmd.CommandText = string.Format("update ShopCar set FruitNum+={0} where UserId={1} and FruitId ={2};"
+                    cmd.CommandText = string.Format("update ShopCar set FruitNum+={0} where UserId={1} and FruitId ={2} and orderId is null;"
                    , item.Fruitnum ,item.Userid, item.Fruitid);
                     //cmd.Connection = conn;
                     status = Convert.ToInt32(cmd.ExecuteNonQuery());
@@ -35,7 +35,7 @@ namespace FruitStore.DAL
                 }
                 else
                 {
-                    cmd.CommandText = string.Format("insert into ShopCar values({0},{1},{2},{3});"
+                    cmd.CommandText = string.Format("insert into ShopCar(UserId,FruitId,FruitNum,FruitPrice) values({0},{1},{2},{3});"
                     , item.Userid, item.Fruitid, item.Fruitnum, item.Price);
                    // cmd.Connection = conn;
                     status = Convert.ToInt32(cmd.ExecuteNonQuery());
@@ -46,14 +46,17 @@ namespace FruitStore.DAL
         }
 
         //根据用户id查询购物车
-        public static DataTable GetInfoByUserId(int userid)
+        public static DataTable GetInfoByUserId(int userid,int orderid)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = string.Format("select f.*,i.FruitName,i.FruitImage from ShopCar f left join FruitInfo i on f.FruitId=i.FruitId  where UserId={0};", userid);
+                if(orderid==0)
+                    cmd.CommandText = string.Format("select f.*,i.FruitName,i.FruitImage from ShopCar f left join FruitInfo i on f.FruitId=i.FruitId  where UserId={0} and orderId is null;", userid);
+                else
+                    cmd.CommandText = string.Format("select f.*,i.FruitName,i.FruitImage from ShopCar f left join FruitInfo i on f.FruitId=i.FruitId  where UserId={0} and orderId = {1};", userid,orderid);
                 cmd.Connection = conn;
                 //cmd.ExecuteReader();
                 DataSet dsUser = new DataSet();
@@ -84,7 +87,7 @@ namespace FruitStore.DAL
                 cmd.CommandText = string.Format("delete from ShopCar where ID={0};", id);
                 status = Convert.ToInt32(cmd.ExecuteNonQuery());
 
-                return GetInfoByUserId(userid);
+                return GetInfoByUserId(userid,0);
 
             }
         }
@@ -123,6 +126,25 @@ namespace FruitStore.DAL
                 cmd.CommandText = string.Format("delete from ShopCar where UserId={0};", userid);
                 cmd.Connection = conn;
                 cmd.ExecuteNonQuery();
+            }
+
+        }
+
+        //绑定订单号
+        public static int BindOrderId(int userid)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "select max(OrderId) from OrderInfo;";
+                int orderid = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.CommandText = string.Format("update ShopCar set orderId={0} where UserId={1} and orderId is null;"
+                   ,orderid, userid);
+                int result = cmd.ExecuteNonQuery();
+                return result;
             }
 
         }

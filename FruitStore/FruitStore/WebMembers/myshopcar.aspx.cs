@@ -20,7 +20,7 @@ namespace FruitStore.WebMembers
                 {
                     string username = Session["UserName"].ToString();
                     int userid = DALUsers.GetUserIdByName(username);
-                    ShopCarList.DataSource = DALShopCar.GetInfoByUserId(userid);
+                    ShopCarList.DataSource = DALShopCar.GetInfoByUserId(userid,0);
                     ShopCarList.DataBind();
                     txtSumPrice.Text = DALShopCar.SumOfUser(userid).ToString();
                 }

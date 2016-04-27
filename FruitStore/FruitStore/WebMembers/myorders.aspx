@@ -85,48 +85,74 @@
 </asp:Content>--%>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
    我的订单
-    <asp:Repeater ID="OrdersList" runat="server" OnItemCommand="OrdersList_ItemCommand">
+    <asp:Repeater ID="OrdersList" runat="server" OnItemCommand="OrdersList_ItemCommand" OnItemDataBound="OrdersList_ItemDataBound">
         <HeaderTemplate>
-            <table class="listtable2">
+           
                 
         </HeaderTemplate>
         <ItemTemplate>
-            <tr class="listheader">   
-                    <th>订单时间</th>
-                    <th>收货姓名</th>
-                    <th>收货地址</th>
-                    <th>收货电话</th>
-                    <th>订单状态</th>               
-                    </tr>
+            <div style="margin-top:10px;">
+                 <table class="listtable2">
             <tr>
+                <td>订单时间</td>
                 <td><%# Eval("OrderTime") %></td>
-                <td><%# Eval("OrderUserName") %></td>
-                <td> <%# Eval("OrderUserAdress") %></td>
-                <td><%# Eval("OrderUserPhone") %></td>
-                <td><%# Eval("OrderStatus") %></td>
-                </tr>
-            <tr class="listheader">                   
-                    <th>用户备注</th>
-                    <th>快递信息</th>
-                    <th>买家评价</th>
-                    <%--<th>卖家评价</th>--%>
-                    <th>下一步</th> 
-                    <th></th>
-                </tr>
+            </tr>
             <tr>
-                <td><%# Eval("OrderUserComment") %></td>
-                <td> <%# Eval("OrderExpressCompany") %> <%# Eval("OrderExpressNumber") %></td>
-                <td><%# Eval("OrderAssessByUser") %></td>
-                <%--<td><%# Eval("OrderAssessByAdm") %></td>--%>
-                <td>
-                    <asp:Button ID="btnNext" CommandName="Next" CommandArgument='<%#Eval("OrderId") %>' runat="server" Text='<%#Eval("Next") %>' /></td>
-            
-           </tr> 
+                <td colspan="2">
+                    <asp:Repeater ID="fruitlist" runat="server">
+                        <HeaderTemplate>
+                            <table class="listtable2">
+                                <tr class="listheader">
+                                    <th></th>
+                                    <th>水果名称</th>
+                                    <th>水果数量</th>
+                                    <th>水果单价</th>
+                                    <th>水果总价</th>
+                                    
+                                    </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:Image ID="img" runat="server" ImageUrl=<%# Eval("FruitImage") %> AlternateText=" Logo" Width="50px" Height="50px"/></td>
+                                <td><%# Eval("FruitName") %></td>
+                                <td>
+                                   <%-- <asp:Button ID="btnSub" runat="server" Text="-" />--%>
+                                     <%# Eval("FruitNum") %>
+                                   <%-- <asp:Button ID="btnAdd" runat="server" Text="+" /></td>--%>
+                                <td><%# Eval("FruitPrice") %></td>
+                                <td><%# Eval("FruitSumPrice") %></td>
+                                
+                            </tr> 
    
+                        </ItemTemplate>
+        
+                            <FooterTemplate>
+                                </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+
+                </td>
+            </tr>
+            <tr>
+                <td>订单状态</td>
+                <td><%# Eval("OrderStatus") %></td>
+            </tr>
+            <tr>
+                <td>快递信息</td>
+                <td><%# Eval("OrderExpressCompany") %> <%# Eval("OrderExpressNumber") %></td>
+            </tr>
+            <tr>
+                <td>操作</td>
+                <td>
+                    <asp:Button ID="btnNext" CommandName="Next" CommandArgument='<%#Eval("OrderId") %>' runat="server" Text='<%#Eval("Next") %>' /></td>       
+           </tr> 
+                      </table>
+    </div>
         </ItemTemplate>
         
         <FooterTemplate>
-            </table>
+           
         </FooterTemplate>
     </asp:Repeater>
     <input  type="text" name="txtAssess" id="txtAssess" style="visibility:hidden;" value="123"/>  

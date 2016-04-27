@@ -45,7 +45,7 @@
     欢迎来到水果商城
 </asp:Content>--%>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
-    我的购物车
+    订单详情
     <asp:Repeater ID="OrderList" runat="server" OnItemCommand="OrderList_ItemCommand">
         <HeaderTemplate>
             <table class="listtable2">
