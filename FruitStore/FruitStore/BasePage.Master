@@ -80,7 +80,7 @@
                 <div id="child1" style="display: none;">
                 <ul class="sidebar-menu">
                     <li class="sidebar-menuitem">
-                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/WebMembers/myInfo.aspx" Text="查看个人信息"/>
+                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/WebMembers/myInfo.aspx" Text="修改基本信息"/>
                     </li>
                     <li class="sidebar-menuitem">
                         <asp:HyperLink ID="HyperLink12" runat="server"  NavigateUrl="~/WebMembers/modifypsw.aspx" Text="修改密码"/>

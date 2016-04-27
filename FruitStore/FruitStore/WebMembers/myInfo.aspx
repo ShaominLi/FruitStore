@@ -12,7 +12,7 @@
             <tr>
                 <td>帐户名：</td>
                 <td>
-                    <asp:TextBox ID="txtUserName" runat="server" MaxLength="20" />
+                    <asp:TextBox ID="txtUserName" runat="server" MaxLength="20" ReadOnly="True" BorderStyle="None" />
                 </td>
             </tr>
             <tr>
@@ -21,22 +21,28 @@
                     <asp:TextBox ID="txtUserTName" runat="server" MaxLength="20" />
                 </td>
             </tr>
-            <tr>
+            <%--<tr>
                 <td>密码：</td>
                 <td>                    
-                    <asp:TextBox ID="txtPsw" runat="server" MaxLength="20" />
+                    <asp:TextBox ID="txtPsw" runat="server" MaxLength="20" ReadOnly="True" />
                 </td>
-            </tr>
-            <tr>
+            </tr>--%>
+<%--            <tr>
                 <td>收货地址：</td>
                 <td>
                     <asp:TextBox ID="txtAddress" runat="server" MaxLength="20" />
                 </td>
-            </tr>
+            </tr>--%>
             <tr>
                 <td>联系电话：</td>
                 <td>
                     <asp:TextBox ID="txtPhone" runat="server" MaxLength="20" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:Button ID="submit" runat="server" Text="确认修改" OnClick="submit_Click" />
                 </td>
             </tr>
         </table>

@@ -218,14 +218,15 @@ namespace FruitStore.DAL
                 cmd.Connection = conn;
                 //Text类型的命令
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = string.Format("select * from DeliveryAddressinfo where UserId={0} ", userid);
+               // cmd.CommandText = string.Format("select * from DeliveryAddressinfo where UserId={0} ", userid);
+                cmd.CommandText = string.Format("select * from UserInfo where UserId={0} ", userid);
                 //执行SqlCommand对象
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 sda.Fill(ds);
                 //存储数据
                 string vname = ds.Tables[0].Rows[0]["UserVName"] as string;
-                string addr = ds.Tables[0].Rows[0]["DeliveryAddress"] as string;
+                string addr = ds.Tables[0].Rows[0]["UserAdress"] as string;
                 string phone = ds.Tables[0].Rows[0]["UserPhone"] as string;
                 DeliveryInfo temp = new DeliveryInfo(userid, addr, vname, phone);
 
@@ -251,7 +252,7 @@ namespace FruitStore.DAL
                 cmd.Connection = conn;
                 //Text类型的命令
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = string.Format("update DeliveryAddressinfo set DeliveryAddress='{0}' where UserId={1} ",adress, userid);
+                cmd.CommandText = string.Format("update UserInfo set UserAdress='{0}' where UserId={1} ",adress, userid);
                 //执行
                 int result = Convert.ToInt32(cmd.ExecuteNonQuery());
                 
@@ -260,6 +261,33 @@ namespace FruitStore.DAL
 
             }
 
+        }
+
+        //修改基本信息
+        public static int ModifyBasicInfo(string username, string usertname, string phone)
+        {
+            int userid = GetUserIdByName(username);
+            string connectionStr = ConfigurationManager.ConnectionStrings["Connection"].ConnectionString.ToString();
+             using (SqlConnection conn = new SqlConnection(connectionStr))
+             {
+                 //打开数据库连接
+                 conn.Open();
+                 //进行一系列操作
+                 //创建SqlCommand对象
+                 SqlCommand cmd = new SqlCommand();
+                 //为Command属性赋值
+                 cmd.Connection = conn;
+                 //Text类型的命令
+                 cmd.CommandType = System.Data.CommandType.Text;
+                 cmd.CommandText = string.Format("update UserInfo set UserTName='{0}',UserPhone='{1}' where UserId={2} ", usertname,phone,userid);
+                 //执行
+                 int result = Convert.ToInt32(cmd.ExecuteNonQuery());
+
+
+                 return result;
+             }
+
+            
         }
     }
 }
