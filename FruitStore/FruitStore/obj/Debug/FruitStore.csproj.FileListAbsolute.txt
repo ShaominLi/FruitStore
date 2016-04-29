@@ -35,4 +35,3 @@ C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构�
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\obj\Debug\FruitStore.dll
 C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\obj\Debug\FruitStore.pdb
-C:\Users\Administrator\Documents\Visual studio 2012\Projects\基于三层架构的水果商店(ASP.NET)\FruitStore\FruitStore\obj\Debug\FruitStore.csprojResolveAssemblyReference.cache

@@ -24,19 +24,19 @@
             <tr>
                 <td>收货名：</td>
                 <td>
-                    <asp:TextBox ID="txtUserName" runat="server" MaxLength="20" />
+                    <asp:TextBox ID="txtUserName" runat="server" MaxLength="20" BorderStyle="None" ReadOnly="True" />
                 </td>
             </tr>
             <tr>
                 <td>收货地址：</td>
                 <td>
-                    <asp:DropDownList ID="AddressList" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="AddressList" runat="server"  ReadOnly="True"></asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td>联系电话：</td>
                 <td>
-                    <asp:TextBox ID="txtPhone" runat="server" MaxLength="20" />
+                    <asp:TextBox ID="txtPhone" runat="server" MaxLength="20" BorderStyle="None" ReadOnly="True"/>
                 </td>
             </tr>
                         <tr>
@@ -46,9 +46,22 @@
                 </td>
             </tr>
                         <tr>
-                <td>订单价格：</td>
+                <td>水果价格：</td>
                 <td>
-                    <asp:TextBox ID="txtPrice" runat="server" MaxLength="20" />
+                    <asp:TextBox ID="txtFruitPrice" runat="server" MaxLength="20" BorderStyle="None" ReadOnly="True" />
+                </td>
+            </tr>
+            <tr>
+                <td>快递费用：</td>
+                <td>
+                    <asp:TextBox ID="txtExpressPrice" runat="server" MaxLength="20" BorderStyle="None" ReadOnly="True" />
+                    <span><font style="color:red;margin-left:10px;">水果费用满88包邮</font></span>
+                </td>
+            </tr>
+            <tr>
+                <td>订单总价：</td>
+                <td>
+                    <asp:TextBox ID="txtSumPrice" runat="server" MaxLength="20"  BorderStyle="None" ReadOnly="True"/>
                 </td>
             </tr>
         </table>

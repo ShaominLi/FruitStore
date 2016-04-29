@@ -39,8 +39,10 @@ namespace FruitStore.WebMembers
                         int index = url.IndexOf("=");
                         if (index != -1)
                             url = url.Substring(0, index + 1);
-                        string type=url.Substring(url.LastIndexOf("/") + 1);
-                        if(type=="apply.aspx")
+                        string type1=url.Substring(url.LastIndexOf("/") + 1);
+                        string temp = url.Substring(0, url.LastIndexOf("/"));
+                        string type2 = temp.Substring(temp.LastIndexOf("/") + 1);
+                        if (type1 == "apply.aspx" || type2 == "AdminWebs")
                             Response.Redirect("~/WebMembers/mainmemu.aspx");
                         Response.Redirect(url);
                     }

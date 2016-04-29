@@ -139,6 +139,10 @@
                 <td><%# Eval("OrderStatus") %></td>
             </tr>
             <tr>
+                <td>订单总价</td>
+                <td><%# Eval("OrderPrice") %></td>
+            </tr>
+            <tr>
                 <td>快递信息</td>
                 <td><%# Eval("OrderExpressCompany") %> <%# Eval("OrderExpressNumber") %></td>
             </tr>

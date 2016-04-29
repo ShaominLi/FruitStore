@@ -102,12 +102,12 @@ namespace FruitStore.DAL
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
 
-                cmd.CommandText = string.Format("select count(*) from ShopCar where UserId={0};", userid);
+                cmd.CommandText = string.Format("select count(*) from ShopCar where UserId={0} and orderId is null;", userid);
                 int num = Convert.ToInt32(cmd.ExecuteScalar());
                 float sum = 0;
                 if (num != 0)
                 {
-                    cmd.CommandText = string.Format("select SUM(FruitSumPrice) from ShopCar where UserId={0};", userid);
+                    cmd.CommandText = string.Format("select SUM(FruitSumPrice) from ShopCar where UserId={0} and orderId is null;", userid);
                     sum = (float)Convert.ToDouble(cmd.ExecuteScalar());
                 }
                 return sum;

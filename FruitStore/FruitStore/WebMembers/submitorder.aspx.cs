@@ -21,12 +21,17 @@ namespace FruitStore.WebMembers
                 string price = Request.QueryString["price"].ToString();
                 txtUserName.Text = my.Uservname;
                 txtPhone.Text = my.Userphone;
-                txtPrice.Text = price;
+                txtFruitPrice.Text = price;
                 txtComment.Text = "";
                 string[] sArray = my.Deliveryadress.Split('+');
                 AddressList.DataSource = sArray;
                 AddressList.DataBind();
 
+                if(Convert.ToDouble(txtFruitPrice.Text)>=88.00)
+                    txtExpressPrice.Text = "0.00";
+                else
+                    txtExpressPrice.Text = "10.00";
+                txtSumPrice.Text = (Convert.ToDouble(txtFruitPrice.Text) + Convert.ToDouble(txtExpressPrice.Text)).ToString();
                 //清空购物车
                 //int userid = DALUsers.GetUserIdByName(Username);
                 //DALShopCar.ClearShopCar(userid);
@@ -41,7 +46,7 @@ namespace FruitStore.WebMembers
             int status = Convert.ToInt32( Request.Form["txtFlag"].ToString());
             string name = txtUserName.Text;
             string phone = txtPhone.Text;
-            float price = (float)Convert.ToDouble(txtPrice.Text);
+            float price = (float)Convert.ToDouble(txtSumPrice.Text);
             string adr = AddressList.SelectedValue;
             string usercommand = txtComment.Text;
             OrderInfo myorder = new OrderInfo(price,name,adr,phone,status,usercommand);
